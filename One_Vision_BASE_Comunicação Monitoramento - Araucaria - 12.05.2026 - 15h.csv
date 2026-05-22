@@ -1,0 +1,12 @@
+﻿;;;;;;;;;Total;30;
+;;;;;;;;;Ok;20;
+Análise Monitoramento;;;;;;;Análise Gestão;;Assertividade;67%;
+;;;;;;;;;;;
+Gráfico de Assertividade;Grade;;;;;;Contagem de Assertividade;Grade;;;
+Assertividade + Cliente;Antecipado;Atrasado;Dentro da Janela;Total Geral;;;Assertividade + Cliente;Antecipado;Atrasado;Dentro da Janela;Total Geral
+NOK;1;8;2;11;;;Dentro do dia;1;8;19;28
+OK;;;19;19;;;NOK;1;8;;9
+Total Geral;1;8;21;30;;;OK;;;19;19
+;;;;;;;Fora do dia;;;2;2
+;;;;;;;NOK;;;2;2
+;;;;;;;Total Geral;1;8;21;30
