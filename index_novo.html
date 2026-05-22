@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One Vision | Visibilidade e Assertividade</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+/* Dados embutidos: não precisa subir CSV nem pasta dados */
+window.ONEVISION_DATA = [
+    {
+        "Data":  "2026-05-01",
+        "Data_BR":  "01/05/2026",
+        "Hora_Fechamento":  "12:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 01_05_2026 - 12h.csv",
+        "Assertividade":  0.91,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.01,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-02",
+        "Data_BR":  "02/05/2026",
+        "Hora_Fechamento":  "11:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 02.05.2026 - 11h.csv",
+        "Assertividade":  0.61,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.31,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-02",
+        "Data_BR":  "02/05/2026",
+        "Hora_Fechamento":  "11:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 02_05_2026 - 11h.csv",
+        "Assertividade":  0.89,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.03,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-04",
+        "Data_BR":  "04/05/2026",
+        "Hora_Fechamento":  "18:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 04.05.2026 - 18h.csv",
+        "Assertividade":  0.5,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.42,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-04",
+        "Data_BR":  "04/05/2026",
+        "Hora_Fechamento":  "18:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 04_05_2026 - 18h.csv",
+        "Assertividade":  0.75,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.17,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-05",
+        "Data_BR":  "05/05/2026",
+        "Hora_Fechamento":  "13:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 05.05.2026 - 13h.csv",
+        "Assertividade":  0.2,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.72,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-05",
+        "Data_BR":  "05/05/2026",
+        "Hora_Fechamento":  "15:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 05_05_2026 -15h.csv",
+        "Assertividade":  0.81,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.11,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-06",
+        "Data_BR":  "06/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 06.05.2026 - 17h.csv",
+        "Assertividade":  0.6,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.32,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-06",
+        "Data_BR":  "06/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 06_05_2026 - 17h.csv",
+        "Assertividade":  0.84,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.08,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-07",
+        "Data_BR":  "07/05/2026",
+        "Hora_Fechamento":  "18:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 07.05.2026 - 18h.csv",
+        "Assertividade":  0.56,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.36,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-08",
+        "Data_BR":  "08/05/2026",
+        "Hora_Fechamento":  "18:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 08.05.2026 - 18h.csv",
+        "Assertividade":  0.57,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.35,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-08",
+        "Data_BR":  "08/05/2026",
+        "Hora_Fechamento":  "18:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 08_05_2026 - 18h.csv",
+        "Assertividade":  0.87,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.05,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-09",
+        "Data_BR":  "09/05/2026",
+        "Hora_Fechamento":  "13:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 09.05.2026 - 13h.csv",
+        "Assertividade":  0.68,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.24,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-09",
+        "Data_BR":  "09/05/2026",
+        "Hora_Fechamento":  "11:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 09_05_2026 - 11h.csv",
+        "Assertividade":  0.75,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.17,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-11",
+        "Data_BR":  "11/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 11.05.2026 - 16h.csv",
+        "Assertividade":  0.69,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.23,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-11",
+        "Data_BR":  "11/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 11_05_2026 - 16h.csv",
+        "Assertividade":  0.93,
+        "Meta":  0.92,
+        "Gap_Meta":  0.01,
+        "Status_Meta":  "Meta atingida"
+    },
+    {
+        "Data":  "2026-05-12",
+        "Data_BR":  "12/05/2026",
+        "Hora_Fechamento":  "15:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 12.05.2026 - 15h.csv",
+        "Assertividade":  0.67,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.25,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-12",
+        "Data_BR":  "12/05/2026",
+        "Hora_Fechamento":  "15:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 12.05.2026 - 15h.csv",
+        "Assertividade":  0.51,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.41,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-12",
+        "Data_BR":  "12/05/2026",
+        "Hora_Fechamento":  "15:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 12_05_2026 - 15h.csv",
+        "Assertividade":  0.69,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.23,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-13",
+        "Data_BR":  "13/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 13.05.2026 - 16h.csv",
+        "Assertividade":  0.65,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.27,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-13",
+        "Data_BR":  "13/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 13.05.2026 - 16h.csv",
+        "Assertividade":  0.39,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.53,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-13",
+        "Data_BR":  "13/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 13_05_2026 - 16h.csv",
+        "Assertividade":  0.85,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.07,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-14",
+        "Data_BR":  "14/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 14.05.2026 - 16h.csv",
+        "Assertividade":  0.67,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.25,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-14",
+        "Data_BR":  "14/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 14.05.2026 - 16h.csv",
+        "Assertividade":  0.53,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.39,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-14",
+        "Data_BR":  "14/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 14_05_2026 - 16h.csv",
+        "Assertividade":  0.92,
+        "Meta":  0.92,
+        "Gap_Meta":  0,
+        "Status_Meta":  "Meta atingida"
+    },
+    {
+        "Data":  "2026-05-15",
+        "Data_BR":  "15/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 15.05.2026 - 17h.csv",
+        "Assertividade":  0.53,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.39,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-15",
+        "Data_BR":  "15/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 15.05.2026 - 17h.csv",
+        "Assertividade":  0.34,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.58,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-15",
+        "Data_BR":  "15/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 15_05_2026 - 17h.csv",
+        "Assertividade":  0.89,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.03,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-16",
+        "Data_BR":  "16/05/2026",
+        "Hora_Fechamento":  "12:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 16.05.2026 - 12h.csv",
+        "Assertividade":  0.52,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.4,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-16",
+        "Data_BR":  "16/05/2026",
+        "Hora_Fechamento":  "12:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 16.05.2026 - 12h.csv",
+        "Assertividade":  0.37,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.55,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-16",
+        "Data_BR":  "16/05/2026",
+        "Hora_Fechamento":  "12:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 16_05_2026 - 12h.csv",
+        "Assertividade":  0.61,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.31,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-18",
+        "Data_BR":  "18/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 18.05.2026 - 16h.csv",
+        "Assertividade":  0.66,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.26,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-18",
+        "Data_BR":  "18/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 18.05.2026 - 16h.csv",
+        "Assertividade":  0.51,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.41,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-18",
+        "Data_BR":  "18/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 18_05_2026 - 16h.csv",
+        "Assertividade":  0.95,
+        "Meta":  0.92,
+        "Gap_Meta":  0.03,
+        "Status_Meta":  "Meta atingida"
+    },
+    {
+        "Data":  "2026-05-19",
+        "Data_BR":  "19/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 19.05.2026 - 16h.csv",
+        "Assertividade":  0.67,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.25,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-19",
+        "Data_BR":  "19/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 19.05.2026 - 16h.csv",
+        "Assertividade":  0.64,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.28,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-19",
+        "Data_BR":  "19/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 19_05_2026 - 16h.csv",
+        "Assertividade":  0.88,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.04,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-20",
+        "Data_BR":  "20/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 20.05.2026 - 16h.csv",
+        "Assertividade":  0.71,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.21,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-20",
+        "Data_BR":  "20/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 20.05.2026 - 16h.csv",
+        "Assertividade":  0.65,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.27,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-20",
+        "Data_BR":  "20/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 20_05_2026 - 16h.csv",
+        "Assertividade":  0.92,
+        "Meta":  0.92,
+        "Gap_Meta":  0,
+        "Status_Meta":  "Meta atingida"
+    },
+    {
+        "Data":  "2026-05-21",
+        "Data_BR":  "21/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 21.05.2026 - 17h (1).csv",
+        "Assertividade":  0.61,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.31,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-21",
+        "Data_BR":  "21/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 21.05.2026 - 17h.csv",
+        "Assertividade":  0.57,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.35,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-21",
+        "Data_BR":  "21/05/2026",
+        "Hora_Fechamento":  "17:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 21_05_2026 - 17h (1).csv",
+        "Assertividade":  0.93,
+        "Meta":  0.92,
+        "Gap_Meta":  0.01,
+        "Status_Meta":  "Meta atingida"
+    },
+    {
+        "Data":  "2026-05-22",
+        "Data_BR":  "22/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Araucária",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Araucaria - 22.05.2026 - 16h.csv",
+        "Assertividade":  0.67,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.25,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-22",
+        "Data_BR":  "22/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Caxias",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Caxias 22.05.2026 - 16h.csv",
+        "Assertividade":  0.67,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.25,
+        "Status_Meta":  "Abaixo da meta"
+    },
+    {
+        "Data":  "2026-05-22",
+        "Data_BR":  "22/05/2026",
+        "Hora_Fechamento":  "16:00",
+        "Base":  "Paulínia",
+        "Arquivo":  "One_Vision_BASE_Comunicação Monitoramento - Paulinia 22_05_2026 - 16h.csv",
+        "Assertividade":  0.9,
+        "Meta":  0.92,
+        "Gap_Meta":  -0.02,
+        "Status_Meta":  "Abaixo da meta"
+    }
+];
+
+</script>
+<style>
+:root{
+  --navy:#003A70;--navy2:#0057A8;--yellow:#FFD200;--orange:#F58220;
+  --green:#00A651;--red:#D93025;--ink:#172033;--muted:#667085;
+  --bg:#F5F8FC;--card:#FFFFFF;--line:#DCE6F2;--shadow:0 18px 45px rgba(16,24,40,.08)
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--ink);background:radial-gradient(circle at top right,rgba(255,210,0,.18),transparent 24%),linear-gradient(135deg,#fff 0%,#F5F8FC 58%,#EEF3F9 100%);min-height:100vh}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(0,87,168,.035) 1px, transparent 1px),linear-gradient(90deg, rgba(0,87,168,.035) 1px, transparent 1px);background-size:42px 42px}
+.topbar{color:white;padding:30px 38px 36px;position:relative;overflow:hidden;border-bottom:6px solid var(--yellow);background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);box-shadow:0 18px 60px rgba(0,0,0,.14)}
+.topbar:before{content:"";position:absolute;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(255,210,0,.18),rgba(255,210,0,0) 62%);right:-250px;top:-360px}
+.topline{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;position:relative;z-index:1}
+.brand{display:flex;gap:16px;align-items:center}
+.mark{width:62px;height:62px;border-radius:20px;background:linear-gradient(135deg,var(--yellow),#fff1a6);color:var(--navy);display:flex;align-items:center;justify-content:center;font-weight:1000;font-size:21px;box-shadow:0 10px 30px rgba(255,210,0,.28)}
+h1{margin:0;font-size:34px;letter-spacing:-.8px}
+.subtitle{margin:9px 0 0;color:#D9E9FF;font-size:14px}
+.headerStats{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:20px;padding:13px 17px;min-width:150px;backdrop-filter:blur(8px)}
+.pill .t{font-size:10px;text-transform:uppercase;color:#E8F2FF;font-weight:1000;letter-spacing:.8px}
+.pill .v{font-size:25px;font-weight:1000;color:var(--yellow);margin-top:4px}
+.container{padding:28px 36px 38px}
+.toolbar,.panel,.card{background:var(--card);border:1px solid var(--line);border-radius:26px;box-shadow:var(--shadow)}
+.toolbar{padding:17px 18px;display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
+.controls{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+select,button{border:1px solid #D7E2EE;border-radius:15px;padding:12px 15px;font-weight:900;font-size:13px}
+select{background:white;color:var(--navy);cursor:pointer}
+button{background:linear-gradient(135deg,var(--navy2),var(--navy));color:white;cursor:pointer}
+.status{color:var(--muted);font-size:13px}
+.cards{display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:16px;margin-bottom:22px}
+.card{padding:20px;min-height:136px;position:relative;overflow:hidden}
+.card:before{content:"";position:absolute;inset:0 0 auto 0;height:5px;background:linear-gradient(90deg,var(--yellow),var(--orange))}
+.card .label{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:1000;letter-spacing:.8px}
+.card .value{font-size:38px;line-height:1;font-weight:1000;color:var(--navy);margin-top:14px}
+.card .sub{font-size:12px;color:var(--muted);margin-top:9px}
+.good{color:var(--green)!important}.bad{color:var(--red)!important}
+.scoreBand{height:14px;background:#EEF3F9;border-radius:999px;overflow:hidden;margin-top:14px}
+.scoreFill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--red),var(--orange),var(--green));width:0%}
+.grid{display:grid;grid-template-columns:2.1fr 1fr;gap:22px;margin-bottom:22px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:22px}
+.panel{padding:22px}
+.panelTitle{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:15px}
+.panel h2{margin:0;font-size:18px;color:var(--navy)}
+.hint{font-size:12px;color:var(--muted)}
+.kpiLine{display:flex;justify-content:space-between;gap:10px;margin:10px 0;padding:13px;border-radius:17px;background:#F8FAFD}
+.kpiLine span{color:var(--muted)}.kpiLine b{color:var(--navy)}
+.tableWrap{overflow:auto;max-height:430px}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:820px}
+th,td{padding:12px 10px;border-bottom:1px solid #EEF1F5;text-align:left;white-space:nowrap}
+th{color:var(--navy);background:#F8FAFD;position:sticky;top:0;z-index:1}
+td{color:#172033}
+.badge{padding:6px 10px;border-radius:999px;font-weight:1000;font-size:11px;display:inline-block}
+.ok{background:#E7F6EC;color:#107C41}.nok{background:#FDECEC;color:#B42318}
+.empty{text-align:center;padding:38px;color:var(--muted);background:#F8FAFD;border:1px dashed #CAD5E2;border-radius:18px}
+.footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
+@media(max-width:1150px){.cards{grid-template-columns:repeat(2,1fr)}.grid,.grid2{grid-template-columns:1fr}.topline{flex-direction:column}.headerStats{justify-content:flex-start}}
+</style>
+
+<style id="pdf-print-respeito">
+@page {
+  size: A4 landscape;
+  margin: 10mm;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  html, body {
+    width: 100%;
+    min-height: auto !important;
+    background: #ffffff !important;
+    color: #172033 !important;
+    overflow: visible !important;
+  }
+
+  body:before,
+  .footer,
+  .toolbar button {
+    display: none !important;
+  }
+
+  .topbar {
+    padding: 14px 18px 16px !important;
+    border-bottom: 5px solid #FFD200 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .topbar:before {
+    display: none !important;
+  }
+
+  .topline {
+    align-items: center !important;
+  }
+
+  .mark {
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    box-shadow: none !important;
+  }
+
+  h1 {
+    font-size: 22px !important;
+    line-height: 1.15 !important;
+  }
+
+  .subtitle {
+    font-size: 10px !important;
+    margin-top: 4px !important;
+  }
+
+  .headerStats {
+    gap: 8px !important;
+  }
+
+  .pill {
+    min-width: 105px !important;
+    padding: 8px 10px !important;
+    border-radius: 12px !important;
+    background: rgba(255,255,255,.16) !important;
+  }
+
+  .pill .t {
+    font-size: 8px !important;
+  }
+
+  .pill .v {
+    font-size: 18px !important;
+  }
+
+  .container {
+    padding: 10px 0 0 !important;
+  }
+
+  .toolbar {
+    display: none !important;
+  }
+
+  .cards {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+    margin-bottom: 10px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .card {
+    min-height: 84px !important;
+    padding: 11px 12px !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    border: 1px solid #DCE6F2 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .card:before {
+    height: 4px !important;
+  }
+
+  .card .label {
+    font-size: 8px !important;
+    letter-spacing: .4px !important;
+  }
+
+  .card .value {
+    font-size: 24px !important;
+    margin-top: 8px !important;
+  }
+
+  .card .sub {
+    font-size: 8px !important;
+    margin-top: 4px !important;
+  }
+
+  .scoreBand {
+    height: 8px !important;
+    margin-top: 7px !important;
+  }
+
+  .grid,
+  .grid2 {
+    display: grid !important;
+    grid-template-columns: 1.45fr 1fr !important;
+    gap: 9px !important;
+    margin-bottom: 10px !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .panel {
+    padding: 12px !important;
+    border-radius: 14px !important;
+    box-shadow: none !important;
+    border: 1px solid #DCE6F2 !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .panelTitle {
+    margin-bottom: 6px !important;
+  }
+
+  .panel h2 {
+    font-size: 13px !important;
+  }
+
+  .hint {
+    font-size: 8px !important;
+  }
+
+  canvas {
+    max-height: 185px !important;
+  }
+
+  .kpiLine {
+    padding: 7px 8px !important;
+    margin: 5px 0 !important;
+    border-radius: 10px !important;
+    font-size: 9px !important;
+  }
+
+  .tableWrap {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+
+  table {
+    min-width: 0 !important;
+    width: 100% !important;
+    font-size: 8.5px !important;
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  th, td {
+    padding: 5px 4px !important;
+    white-space: normal !important;
+    line-height: 1.15 !important;
+  }
+
+  th {
+    position: static !important;
+  }
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .badge {
+    padding: 3px 6px !important;
+    font-size: 8px !important;
+  }
+
+  .empty {
+    padding: 14px !important;
+    font-size: 9px !important;
+  }
+
+  section.panel:last-of-type {
+    page-break-before: auto !important;
+  }
+}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="topline">
+    <div class="brand">
+      <div class="mark">OV</div>
+      <div>
+        <h1>One Vision | Visibilidade e Assertividade</h1>
+        <p class="subtitle">IPIRANGA • Control Tower • KPI oficial via CSV — célula K3</p>
+      </div>
+    </div>
+    <div class="headerStats">
+      <div class="pill"><div class="t">Meta Oficial</div><div class="v">92%</div></div>
+      <div class="pill"><div class="t">Operação</div><div class="v" id="topStatus">--</div></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+<section class="toolbar">
+  <div class="controls">
+    <select id="baseFilter"><option value="TODAS">Todas as bases</option></select>
+    <select id="periodFilter"><option value="TODOS">Todo período</option><option value="ULTIMO_DIA">Último dia</option><option value="ULTIMOS_7">Últimos 7 dias</option></select>
+    <span class="status" id="status">Carregando consolidado...</span>
+  </div>
+  <button onclick="window.print()">Imprimir / PDF</button>
+</section>
+
+<section class="cards">
+  <div class="card main"><div class="label">Assertividade Consolidada</div><div class="value" id="kpiAssert">--</div><div class="scoreBand"><div class="scoreFill" id="scoreFill"></div></div><div class="sub">Valor oficial consolidado</div></div>
+  <div class="card"><div class="label">Gap Meta 92%</div><div class="value" id="kpiGap">--</div><div class="sub">Diferença em p.p.</div></div>
+  <div class="card"><div class="label">Bases/Fechamentos</div><div class="value" id="kpiFechamentos">--</div><div class="sub">Registros carregados</div></div>
+  <div class="card"><div class="label">Melhor Base</div><div class="value" id="kpiMelhor">--</div><div class="sub">No filtro atual</div></div>
+</section>
+
+<section class="grid">
+  <div class="panel"><div class="panelTitle"><h2>Evolução diária da assertividade</h2><span class="hint">Meta 92%</span></div><canvas id="evolucaoChart" height="120"></canvas></div>
+  <div class="panel"><div class="panelTitle"><h2>Radar de Performance</h2></div><div id="radarBox" class="empty">Carregando...</div></div>
+</section>
+
+<section class="grid2">
+  <div class="panel"><div class="panelTitle"><h2>Ranking por base</h2><span class="hint">Performance consolidada</span></div><div id="rankingBox" class="empty">Carregando...</div></div>
+  <div class="panel"><div class="panelTitle"><h2>Status Meta</h2><span class="hint">Fechamentos dentro x abaixo</span></div><canvas id="statusChart" height="145"></canvas></div>
+</section>
+
+<section class="panel">
+  <div class="panelTitle"><h2>Histórico de fechamentos</h2><span class="hint">Fonte: CSV / célula K3</span></div>
+  <div id="tableBox" class="empty">Carregando histórico...</div>
+</section>
+</main>
+<div class="footer">One Vision | Visibilidade e Assertividade • Atualização via CSV K3</div>
+
+<script>
+const META=0.92;let resumo=[],chart=null,statusChart=null;
+function pct(v){return isFinite(v)?(v*100).toFixed(1).replace('.',',')+'%':'--'}
+function pp(v){return isFinite(v)?(v*100).toFixed(1).replace('.',',')+' p.p.':'--'}
+function num(v){return Number(String(v??'').replace(',','.'))||0}
+function updateBaseFilter(){const sel=document.getElementById('baseFilter'),cur=sel.value,bases=[...new Set(resumo.map(r=>r.Base))].filter(Boolean).sort();sel.innerHTML='<option value="TODAS">Todas as bases</option>'+bases.map(b=>`<option value="${b}">${b}</option>`).join('');sel.value=bases.includes(cur)?cur:'TODAS'}
+function filtered(){let data=[...resumo];const b=document.getElementById('baseFilter').value;if(b!=='TODAS')data=data.filter(r=>r.Base===b);const p=document.getElementById('periodFilter').value;if(p!=='TODOS'&&data.length){const dates=[...new Set(data.map(r=>r.Data))].sort();if(p==='ULTIMO_DIA'){const max=dates[dates.length-1];data=data.filter(r=>r.Data===max)}if(p==='ULTIMOS_7'){const last=dates.slice(-7);data=data.filter(r=>last.includes(r.Data))}}return data}
+function avg(data){return data.length?data.reduce((s,r)=>s+num(r.Assertividade),0)/data.length:0}
+function render(){const data=filtered(),ass=avg(data),gap=ass-META;document.getElementById('kpiAssert').innerText=data.length?pct(ass):'--';document.getElementById('kpiAssert').className='value '+(ass>=META?'good':'bad');document.getElementById('kpiGap').innerText=data.length?pp(gap):'--';document.getElementById('kpiGap').className='value '+(ass>=META?'good':'bad');document.getElementById('kpiFechamentos').innerText=data.length||'--';document.getElementById('scoreFill').style.width=data.length?Math.max(3,Math.min(100,ass*100))+'%':'0%';document.getElementById('topStatus').innerText=data.length?(ass>=META?'ON':'OFF'):'--';const best=[...data].sort((a,b)=>num(b.Assertividade)-num(a.Assertividade))[0];document.getElementById('kpiMelhor').innerText=best?best.Base:'--';renderLine(data);renderStatus(data);renderRanking(data);renderRadar(data,ass);renderTable(data)}
+function renderLine(data){const by={};data.forEach(r=>{if(!by[r.Data])by[r.Data]={sum:0,count:0,label:r.Data_BR};by[r.Data].sum+=num(r.Assertividade);by[r.Data].count++});const keys=Object.keys(by).sort(),labels=keys.map(k=>by[k].label),values=keys.map(k=>+(by[k].sum/by[k].count*100).toFixed(1)),meta=keys.map(_=>92);if(chart)chart.destroy();chart=new Chart(document.getElementById('evolucaoChart'),{type:'line',data:{labels,datasets:[{label:'Assertividade %',data:values,borderWidth:4,tension:.35,pointRadius:5},{label:'Meta 92%',data:meta,borderWidth:2,borderDash:[7,7],pointRadius:0}]},options:{plugins:{legend:{position:'bottom'}},scales:{y:{min:0,max:100,ticks:{callback:v=>v+'%'}}}}})}
+function renderStatus(data){const dentro=data.filter(r=>num(r.Assertividade)>=META).length,abaixo=data.length-dentro;if(statusChart)statusChart.destroy();statusChart=new Chart(document.getElementById('statusChart'),{type:'doughnut',data:{labels:['Meta atingida','Abaixo da meta'],datasets:[{data:[dentro,abaixo],borderWidth:0}]},options:{cutout:'68%',plugins:{legend:{position:'bottom'}}}})}
+function renderRanking(data){const box=document.getElementById('rankingBox');if(!data.length){box.className='empty';box.innerText='Sem dados no consolidado.';return}const map={};data.forEach(r=>{if(!map[r.Base])map[r.Base]={sum:0,count:0};map[r.Base].sum+=num(r.Assertividade);map[r.Base].count++});const rows=Object.entries(map).map(([Base,v])=>({Base,ass:v.sum/v.count})).sort((a,b)=>b.ass-a.ass);box.className='';box.innerHTML='<table style="min-width:0"><thead><tr><th>Base</th><th>Assert.</th><th>Gap</th><th>Status</th></tr></thead><tbody>'+rows.map(r=>`<tr><td><b>${r.Base}</b></td><td>${pct(r.ass)}</td><td>${pp(r.ass-META)}</td><td><span class="badge ${r.ass>=META?'ok':'nok'}">${r.ass>=META?'Meta':'Abaixo'}</span></td></tr>`).join('')+'</tbody></table>'}
+function renderRadar(data,ass){const box=document.getElementById('radarBox');if(!data.length){box.className='empty';box.innerText='Sem dados.';return}const rows=[...data].sort((a,b)=>num(b.Assertividade)-num(a.Assertividade));const best=rows[0],worst=rows[rows.length-1];const dates=[...new Set(data.map(r=>r.Data))].sort();let trend='Estável';if(dates.length>=2){const last=dates[dates.length-1],prev=dates[dates.length-2];const sl=avg(data.filter(r=>r.Data===last));const sp=avg(data.filter(r=>r.Data===prev));trend=sl>sp?'Em evolução':sl<sp?'Em atenção':'Estável'}box.className='';box.innerHTML=`<div class="kpiLine"><span>Melhor fechamento</span><b>${best.Base} • ${pct(num(best.Assertividade))}</b></div><div class="kpiLine"><span>Ponto de atenção</span><b>${worst.Base} • ${pct(num(worst.Assertividade))}</b></div><div class="kpiLine"><span>Tendência</span><b>${trend}</b></div><div class="kpiLine"><span>Status meta</span><b>${ass>=META?'Dentro da meta':'Abaixo da meta'}</b></div>`}
+function renderTable(data){const box=document.getElementById('tableBox');if(!data.length){box.className='empty';box.innerText='Sem dados no consolidado.';return}box.className='tableWrap';box.innerHTML='<table><thead><tr><th>Data</th><th>Hora</th><th>Base</th><th>Assertividade</th><th>Gap</th><th>Status</th><th>Arquivo</th></tr></thead><tbody>'+data.map(r=>{const ass=num(r.Assertividade);return `<tr><td>${r.Data_BR}</td><td>${r.Hora_Fechamento||''}</td><td><b>${r.Base}</b></td><td><b>${pct(ass)}</b></td><td>${pp(ass-META)}</td><td><span class="badge ${ass>=META?'ok':'nok'}">${ass>=META?'Meta atingida':'Abaixo da meta'}</span></td><td>${r.Arquivo||''}</td></tr>`}).join('')+'</tbody></table>'}
+function init(){resumo=Array.isArray(window.ONEVISION_DATA)?window.ONEVISION_DATA:[];
+resumo.forEach(r=>{
+  if(r.Base){
+    r.Base = r.Base.replaceAll('Paulínia','Paulínia').replaceAll('Araucária','Araucária');
+  }
+});
+
+document.getElementById('status').innerText=`${resumo.length} fechamento(s) carregado(s).`;updateBaseFilter();render()}
+document.getElementById('baseFilter').addEventListener('change',render);document.getElementById('periodFilter').addEventListener('change',render);init();
+</script>
+
+<script>
+(function(){
+  function resizeChartsForPrint(){
+    setTimeout(function(){
+      if(window.chart && typeof window.chart.resize === 'function') window.chart.resize();
+      if(window.statusChart && typeof window.statusChart.resize === 'function') window.statusChart.resize();
+    }, 200);
+  }
+  window.addEventListener('beforeprint', resizeChartsForPrint);
+  window.addEventListener('afterprint', resizeChartsForPrint);
+})();
+</script>
+
+</body>
+</html>
